@@ -241,3 +241,7 @@ main .section {
 main .section.highlight {
   background-color: var(--highlight-background-color);
 }
+
+main .section.highlight-2 {
+  background-color: grey;
+}
