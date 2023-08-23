@@ -1,6 +1,8 @@
-import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
+import { fetchPlaceholders, createOptimizedPicture, toCamelCase } from '../../scripts/lib-franklin.js';
 
-export default function decorate(block) {
+export default async function decorate(block) {
+  const placeholders = await fetchPlaceholders();
+
   /* change to ul, li */
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
@@ -13,6 +15,13 @@ export default function decorate(block) {
     ul.append(li);
   });
   ul.querySelectorAll('img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
+  ul.querySelectorAll('a').forEach(a => {
+    let pKey = toCamelCase(a.innerText);
+    if (placeholders[pKey]) {
+      a.innerText = placeholders[pKey];
+    }
+  });
+  
   block.textContent = '';
   block.append(ul);
 }
