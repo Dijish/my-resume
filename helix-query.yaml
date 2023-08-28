@@ -1,0 +1,7 @@
+indices:
+  mysite:
+    properties:
+      author:
+        select: main label[for='name']
+        value: |
+          match(el, 'Name')
