@@ -1,8 +1,0 @@
-version: 1
-auto-generated: true
-sitemaps:
-  default:
-    origin: https://https://main--my-resume--dijish.hlx.page
-    source: /query-index.json
-    destination: /sitemap.xml
-    lastmod: YYYY-MM-DD
